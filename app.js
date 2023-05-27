@@ -1,0 +1,180 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin)
+
+const bar = new ProgressBar.Circle('#loading-container', {
+    color: '#b7ab98',
+    strokeWidth: 4,
+    trailWidth: 1,
+    easing: 'easeInOut',
+    duration: 1200,
+    text: {
+      autoStyleContainer: false
+    },
+    from: { color: '#b7ab98', width: 1 },
+    to: { color: '#b7ab98', width: 4 },
+    step: function(state, circle) {
+      circle.path.setAttribute('stroke', state.color);
+      circle.path.setAttribute('stroke-width', state.width);
+  
+      let value = Math.round(circle.value() * 100);
+      if (value === 0) {
+        circle.setText('0%');
+      } else {
+        circle.setText(`${value}%`);
+      }
+  
+    }
+  });
+  bar.text.style.fontSize = '2rem';
+
+const lenis = new Lenis({
+    duration: 2.6,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+})
+  
+function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+}
+  
+requestAnimationFrame(raf)
+
+const cursor = new MouseFollower({
+    el: null,
+    container: document.body,
+    className: 'mf-cursor',
+    innerClassName: 'mf-cursor-inner',
+    textClassName: 'mf-cursor-text',
+    mediaClassName: 'mf-cursor-media',
+    mediaBoxClassName: 'mf-cursor-media-box',
+    iconSvgClassName: 'mf-svgsprite',
+    iconSvgNamePrefix: '-',
+    iconSvgSrc: '',
+    dataAttr: 'cursor',
+    hiddenState: '-hidden',
+    textState: '-text',
+    iconState: '-icon',
+    activeState: '-active',
+    mediaState: '-media',
+    stateDetection: {
+        '-pointer': 'a,button',
+        '-hidden': 'iframe'
+    },
+    visible: true,
+    visibleOnState: false,
+    speed: 0.55,
+    ease: 'expo.out',
+    overwrite: true,
+    skewing: 0.5,
+    skewingText: 0.7,
+    skewingIcon: 0.7,
+    skewingMedia: 0.7,
+    skewingDelta: 0.01,
+    skewingDeltaMax: 0.15,
+    stickDelta: 0.15,
+    showTimeout: 20,
+    hideOnLeave: true,
+    hideTimeout: 300,
+    hideMediaTimeout: 300
+});
+
+document.querySelectorAll(".nav-list li").forEach(e => {
+    e.addEventListener("click", () => {
+        gsap.to(window, {duration: 1.2, scrollTo: e.children[0].getAttribute("data-href")})
+    })
+})
+
+const lines = document.querySelectorAll('.lines-gsap');
+
+lines.forEach(e => {
+  gsap.to(e.children[0].children, {"--size": "40%", stagger: 0.4, duration: 6, scrollTrigger: {
+  trigger: e,
+  start: '0% center',
+  scrub: true,
+}});  
+});
+
+//THREEJS========================================================================================================
+
+const model = new URL('./3D/globe.min.gltf', import.meta.url);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+window.addEventListener('resize', function() {
+    camera.aspect = (window.innerWidth / window.innerHeight);
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+
+renderer.gammaOutput = true
+
+const Sun = new THREE.DirectionalLight( 0xffffff, 4 );
+Sun.position.set(1, -1, -2)
+scene.add(Sun);
+
+const ambient =  new THREE.AmbientLight( 0x97DEFF, 4 );
+scene.add(ambient);
+
+
+const camera = new THREE.PerspectiveCamera(
+    4,
+    window.innerWidth / window.innerHeight,
+    1,
+    1000
+);
+
+// scene.background = new THREE.Color('#ffffff');
+const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enabled = false;
+
+camera.position.set(0, 10, 10);
+orbit.update();
+
+const loader = new GLTFLoader();
+const dracoLoader = new DRACOLoader();
+
+dracoLoader.setDecoderPath( './libs/draco/' );
+loader.setDRACOLoader( dracoLoader );
+
+let mixer;
+
+loader.load(model.href, function(gltf) {
+    const model = gltf.scene;
+
+    lenis.on('scroll', (e) => {
+        model.rotation.y = e.animate.value/500
+      })
+
+    const clock = new THREE.Clock();
+    function animate() {
+        if(mixer)
+            mixer.update(clock.getDelta());
+        renderer.render(scene, camera);
+    }
+
+    scene.add(model);
+    mixer = new THREE.AnimationMixer(model);
+    
+    renderer.setAnimationLoop(animate);
+}, undefined, function(error) {
+    console.error(error);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    bar.animate(1.0, function(){
+        document.querySelector(".loading-screen").classList.add("hidden")
+        setTimeout(() => {
+            document.querySelector(".loading-screen").style.display = 'none'
+        }, 300)
+    })
+});
