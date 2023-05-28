@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html.white-theme { 
+    filter: invert(1) hue-rotate(120deg);
+}
 .lenis.lenis-smooth {
     scroll-behavior: auto;
   }
@@ -285,6 +288,7 @@ canvas{
 
 .horizontal-card p{
     font-size: 1.2rem;
+    font-weight: 700;
     margin: 10px 0;
     width: 450px;
     text-align: center;
@@ -336,5 +340,8 @@ canvas{
     .horizontal-card p{
         width: 250px;
         font-size: 4rem;
+    }
+    .section-footer{
+        height: 150px;
     }
 }
