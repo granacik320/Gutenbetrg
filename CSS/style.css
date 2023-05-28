@@ -36,7 +36,7 @@ div.hero-container{
     font-size: 8.75rem;
     text-transform: uppercase;
     letter-spacing: -2px;
-    line-height: 90%;
+    line-height: 95%;
 }
 .hero-content h6{
     font-size: 1rem;
@@ -60,6 +60,7 @@ div.hero-container{
     font-weight: 700;
     line-height: 100%;
     color:#b7ab983b;
+    letter-spacing: 4px;
 }
 .lines-content{
     text-align: left;
@@ -131,6 +132,7 @@ div.hero-container{
     font-weight: 700;
     line-height: 100%;
     color:#b7ab983b;
+    letter-spacing: 4px;
 }
 footer{
     position: fixed;
@@ -248,6 +250,7 @@ canvas{
 .plain-text-mask span{
     color:#b7ab98;
     clip-path: inset(0 var(--size) 0 0);
+    letter-spacing: 4px;
 }
 .section-footer{
     background-color: black;
@@ -262,7 +265,7 @@ canvas{
 .horizontal {
     padding: 100px 0;
     display: flex;
-    overflow: hidden;;
+    overflow: hidden;
 }
 
 .horizontal-card {
