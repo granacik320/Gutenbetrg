@@ -92,12 +92,30 @@ document.querySelectorAll(".nav-list li").forEach(e => {
 const lines = document.querySelectorAll('.lines-gsap');
 
 lines.forEach(e => {
-  gsap.to(e.children[0].children, {"--size": "40%", stagger: 0.4, duration: 6, scrollTrigger: {
+  gsap.to(e.children[0].children, {"--size": "0%", stagger: 0.7, duration: 20, scrollTrigger: {
   trigger: e,
   start: '0% center',
   scrub: true,
 }});  
 });
+
+document.querySelectorAll(".plain-gsap").forEach((section) => {
+    section.children[0].children[2].innerText.split('').forEach((e) => {
+        const letter = document.createElement('span')
+        letter.innerHTML = e
+        letter.setAttribute("style", "--size: 100%")
+        section.children[0].children[1].appendChild(letter)
+    })
+})
+
+document.querySelectorAll(".plain-text-mask").forEach(e => {
+    gsap.to(e.children, {"--size": "0%", stagger: 1, duration: 1, scrollTrigger: {
+        trigger: e,
+        start: 'top bottom',
+        end: "center 20%",
+        scrub: true,
+    }})
+}); 
 
 //THREEJS========================================================================================================
 
@@ -169,6 +187,8 @@ loader.load(model.href, function(gltf) {
 }, undefined, function(error) {
     console.error(error);
 });
+
+//Loadnig Screen===========================================================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     bar.animate(1.0, function(){

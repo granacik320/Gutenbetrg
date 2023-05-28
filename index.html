@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+    <link rel="manifest" href="./favicons/site.webmanifest">
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/mouse_following.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
@@ -35,7 +39,7 @@
             <ul class="nav-list">
                 <li><a data-href="#start" data-hover="START" data-cursor='-mdl' data-cursor-stick><span>START</span></a></li>
                 <li><a data-href="#about" data-hover="ABOUT" data-cursor='-mdl' data-cursor-stick><span>ABOUT</span></a></li>
-                <li><a data-href="#contact" data-hover="CONTACT" data-cursor='-mdl' data-cursor-stick><span>CONTACT</span></a></li>
+                <li><a data-href="#end" data-hover="END" data-cursor='-mdl' data-cursor-stick><span>END</span></a></li>
             </ul>
         </header>
         <div class="hero-container" id="start">
@@ -47,39 +51,45 @@
         <section class="hero-container plain-gsap" id="about">
             <div class="about-content" data-cursor='-lg'>
                 <h6>ABOUT</h6>
-                <p>
-                    <span>Lorem ipsum dolor sit amet </span>
-                    <span>consectetur adipisicing elit.</span>
-                    <span>Culpa minus ab accusantium in quibusdam cupiditate,</span>
-                    <span>repellat maiores sapiente sit! Necessitatibus </span>
-                    <span>est quas tenetur quis sed consectetur quam fuga.</span>
-                    <span>Reprehenderit, amet!</span>
-                </p>
+                <div class="plain-text-mask"></div>
+                <div>
+                    Gutenberg to nowy edytor bloków
+                    wprowadzony w WordPressie w wersji 5.0.
+                    Zastępuje on tradycyjny edytor tekstowy i
+                    oferuje nowy interfejs do tworzenia oraz
+                    edytowania treści na stronach WordPressa.
+                </div>
             </div>
         </section>
         <section class="hero-container lines-gsap">
             <div class="lines-content mask" data-cursor="-hidden">
                 <div class="line" style="--size:100%;"><h6>What</h6></div>
-                <div class="line" style="--size:100%;"><h2>lorem</h2></div>
-                <div class="line" style="--size:100%;"><h2>lorem</h2></div>
-                <div class="line" style="--size:100%;"><h2>lorem</h2></div>
-                <div class="line" style="--size:100%;"><h2>lorem</h2></div>
-                <div class="line" style="--size:100%;"><h2>lorem</h2></div>
+                <div class="line" style="--size:100%;"><h2>Łatwo</h2></div>
+                <div class="line" style="--size:100%;"><h2>Elastycznie</h2></div>
+                <div class="line" style="--size:100%;"><h2>Reużywalnie</h2></div>
+                <div class="line" style="--size:100%;"><h2>Podkontrola</h2></div>
+                <div class="line" style="--size:100%;"><h2>Rozszerzalnie</h2></div>
             </div>
             <div class="lines-content bg">
                 <div class="line"><h6>What</h6></div>
-                <div class="line"><h2>lorem</h2></div>
-                <div class="line"><h2>lorem</h2></div>
-                <div class="line"><h2>lorem</h2></div>
-                <div class="line"><h2>lorem</h2></div>
-                <div class="line"><h2>lorem</h2></div>
+                <div class="line"><h2>Łatwo</h2></div>
+                <div class="line"><h2>Elastycznie</h2></div>
+                <div class="line"><h2>Reużywalnie</h2></div>
+                <div class="line"><h2>Podkontrola</h2></div>
+                <div class="line"><h2>Rozszerzalnie</h2></div>
             </div>
         </section>
         <section class="hero-container plain-gsap">
             <div class="globe-content" data-cursor='-lg'>
-                <h6>world</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa minus ab accusantium in quibusdam cupiditate, repellat maiores sapiente sit! Necessitatibus est quas tenetur quis sed consectetur quam fuga. Reprehenderit, amet!</p>
+                <h6>What</h6>
+                <div class="plain-text-mask"></div>
+                <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum nostrum temporibus accusantium molestias provident totam! Dicta ipsa, impedit perferendis delectus unde pariatur repellat, autem, sit accusamus aspernatur eligendi?
+                </div>
             </div>
+        </section>
+        <section class="section-footer" id="end">
+            <h3 data-cursor='-lg'>nothing more.</h3>
         </section>
         <footer>
             <ul class="footer-list">
