@@ -117,6 +117,21 @@ document.querySelectorAll(".plain-text-mask").forEach(e => {
     }})
 }); 
 
+const horizontal = document.querySelector(".horizontal");
+let cards = gsap.utils.toArray(".horizontal-card");
+
+gsap.to(cards, {
+  xPercent: -100 * (cards.length - 1),
+  scrollTrigger: {
+    trigger: horizontal,
+    pin: true,
+    scrub: 2,
+    duration: 3,
+    snap: 1 / (cards.length - 1),
+    end: "+=" + horizontal.offsetWidth
+  }
+});
+
 //THREEJS========================================================================================================
 
 const model = new URL('./3D/globe.min.gltf', import.meta.url);
