@@ -126,7 +126,7 @@ div.hero-container{
 .globe-content div{
     font-size: 5rem;
     font-weight: 700;
-    line-height: 90%;
+    line-height: 100%;
     color:#b7ab983b;
 }
 footer{
@@ -268,6 +268,13 @@ canvas{
     }
     .lines-content h2{
         font-size: 72px;
+    }
+    .lines-content h2{
+        font-size: 30px;
+    }
+    .lines-content.mask .line:not(.line:first-of-type):hover:before{
+        transform: translateY(0);
+        height: 30px;
     }
 }
 

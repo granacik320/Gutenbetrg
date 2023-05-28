@@ -169,14 +169,16 @@ let mixer;
 loader.load(model.href, function(gltf) {
     const model = gltf.scene;
 
-    lenis.on('scroll', (e) => {
-        model.rotation.y = e.animate.value/500
-      })
-
+    if(window.innerWidth > 800){
+        lenis.on('scroll', (e) => {
+            model.rotation.y += e.velocity/500;
+        })
+    }
     const clock = new THREE.Clock();
     function animate() {
         if(mixer)
             mixer.update(clock.getDelta());
+            model.rotation.y += 0.001;
         renderer.render(scene, camera);
     }
 
