@@ -4,7 +4,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(ScrollToPlugin);
 
 const bar = new ProgressBar.Circle('#loading-container', {
     color: '#b7ab98',
@@ -38,11 +38,11 @@ const lenis = new Lenis({
 })
   
 function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
+    lenis.raf(time);
+    requestAnimationFrame(raf);
 }
   
-requestAnimationFrame(raf)
+requestAnimationFrame(raf);
 
 const cursor = new MouseFollower({
     el: null,
@@ -85,9 +85,11 @@ const cursor = new MouseFollower({
 
 document.querySelectorAll(".nav-list li").forEach(e => {
     e.addEventListener("click", () => {
-        gsap.to(window, {duration: 1.2, scrollTo: e.children[0].getAttribute("data-href")})
+        gsap.to(window, {duration: 1.2, scrollTo: e.children[0].getAttribute("data-href")});
     })
 })
+
+//gsap==============================================================================================================
 
 const lines = document.querySelectorAll('.lines-gsap');
 
@@ -101,10 +103,10 @@ lines.forEach(e => {
 
 document.querySelectorAll(".plain-gsap").forEach((section) => {
     section.children[0].children[2].innerText.split('').forEach((e) => {
-        const letter = document.createElement('span')
-        letter.innerHTML = e
-        letter.setAttribute("style", "--size: 100%")
-        section.children[0].children[1].appendChild(letter)
+        const letter = document.createElement('span');
+        letter.innerHTML = e;
+        letter.setAttribute("style", "--size: 100%");
+        section.children[0].children[1].appendChild(letter);
     })
 })
 
@@ -149,10 +151,10 @@ document.body.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
 
-renderer.gammaOutput = true
+renderer.gammaOutput = true;
 
 const Sun = new THREE.DirectionalLight( 0xffffff, 4 );
-Sun.position.set(1, -1, -2)
+Sun.position.set(1, -1, -2);
 scene.add(Sun);
 
 const ambient =  new THREE.AmbientLight( 0x97DEFF, 4 );
@@ -176,7 +178,7 @@ orbit.update();
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
 
-dracoLoader.setDecoderPath( './libs/draco/' );
+dracoLoader.setDecoderPath('./libs/draco/');
 loader.setDRACOLoader( dracoLoader );
 
 let mixer;
@@ -209,9 +211,13 @@ loader.load(model.href, function(gltf) {
 
 document.addEventListener('DOMContentLoaded', () => {
     bar.animate(1.0, function(){
-        document.querySelector(".loading-screen").classList.add("hidden")
+        document.querySelector(".loading-screen").classList.add("hidden");
         setTimeout(() => {
-            document.querySelector(".loading-screen").style.display = 'none'
-        }, 300)
-    })
+            document.querySelector(".loading-screen").style.display = 'none';
+        }, 300);
+    });
 });
+
+function changeTheme(){
+    document.querySelector('html').classList.toggle('white-theme')
+}
