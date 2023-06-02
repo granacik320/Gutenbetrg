@@ -46,7 +46,7 @@
         <div class="hero-container" id="start">
             <div class="hero-content" data-cursor='-lg'>
                 <h6>Paweł Kuźniak</h6>
-                <h1>Gutenberg, edytor bloków</h1>
+                <h1>Gutenberg<br>edytor<br>bloków</h1>
             </div>
         </div>
         <section class="hero-container plain-gsap" id="about">
@@ -125,6 +125,24 @@
         </section>
         <footer>
             <ul class="footer-list">
+                <!-- svg jest dla przycisku motywu jest z: https://web.dev/building-a-theme-switch-component/, wszystko inne zostało zrobione ręcznie :)-->
+                <li class="socials"><a data-cursor='-md' data-cursor-stick onClick="theme()"><svg class="theme-btn" width="24" height="24">
+                    <circle class="sun" cx="12" cy="12" r="10" mask="url(#moon-mask)" fill="#b7ab98" />
+                    <g stroke="#b7ab98">
+                      <line x1="12" y1="1" x2="12" y2="3" />
+                      <line x1="12" y1="21" x2="12" y2="23" />
+                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                      <line x1="1" y1="12" x2="3" y2="12" />
+                      <line x1="21" y1="12" x2="23" y2="12" />
+                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                    <mask class="moon" id="moon-mask">
+                      <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                      <circle cx="20" cy="10" r="9" fill="black" />
+                    </mask>
+                  </svg></a></li>
                 <li class="socials"><a data-cursor='-md' data-cursor-stick href="https://www.twitch.tv/granacik___"><svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/><g transform="matrix(0.95 0 0 0.95 12 12)" ><path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12.5)" d="M 5.3632812 2 L 2 6.6367188 L 2 20 L 7 20 L 7 23 L 10 23 L 13 20 L 17 20 L 22 15 L 22 2 L 5.3632812 2 z M 6 4 L 20 4 L 20 13 L 17 16 L 12 16 L 9 19 L 9 16 L 6 16 L 6 4 z M 11 7 L 11 12 L 13 12 L 13 7 L 11 7 z M 16 7 L 16 12 L 18 12 L 18 7 L 16 7 z" stroke-linecap="round" /></g></svg></a></li>
                 <li class="socials"><a data-cursor='-md' data-cursor-stick href="https://www.facebook.com/profile.php?id=100032984734412"><svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/><g transform="matrix(0.77 0 0 0.77 12 12)" ><path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill-rule: nonzero; opacity: 1;" transform=" translate(-13, -12.93)" d="M 13 0 C 5.82 0 0 5.82 0 13 C 0 19.518 4.801 24.899 11.057 25.839 L 11.057 16.445 L 7.84 16.445 L 7.84 13.028 L 11.057 13.028 L 11.057 10.754000000000001 C 11.057 6.989000000000001 12.891 5.3370000000000015 16.02 5.3370000000000015 C 17.518 5.3370000000000015 18.311 5.448000000000001 18.686 5.499000000000001 L 18.686 8.482000000000001 L 16.552 8.482000000000001 C 15.224 8.482000000000001 14.76 9.741000000000001 14.76 11.161000000000001 L 14.76 13.029000000000002 L 18.653 13.029000000000002 L 18.125 16.446 L 14.76 16.446 L 14.76 25.868000000000002 C 21.105 25.006 26 19.581 26 13 C 26 5.82 20.18 0 13 0 z" stroke-linecap="round" /></g></svg></a></li>
                 <li class="socials"><a data-cursor='-md' data-cursor-stick href="https://www.linkedin.com/granacik"><svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/><g transform="matrix(0.77 0 0 0.77 12 12)" ><path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill-rule: nonzero; opacity: 1;" transform=" translate(-13, -13)" d="M 21.125 0 L 4.875 0 C 2.183594 0 0 2.183594 0 4.875 L 0 21.125 C 0 23.816406 2.183594 26 4.875 26 L 21.125 26 C 23.816406 26 26 23.816406 26 21.125 L 26 4.875 C 26 2.183594 23.816406 0 21.125 0 Z M 8.039063 22.070313 L 4 22.070313 L 3.976563 9.976563 L 8.015625 9.976563 Z M 5.917969 8.394531 L 5.894531 8.394531 C 4.574219 8.394531 3.722656 7.484375 3.722656 6.351563 C 3.722656 5.191406 4.601563 4.3125 5.945313 4.3125 C 7.289063 4.3125 8.113281 5.191406 8.140625 6.351563 C 8.140625 7.484375 7.285156 8.394531 5.917969 8.394531 Z M 22.042969 22.070313 L 17.96875 22.070313 L 17.96875 15.5 C 17.96875 13.910156 17.546875 12.828125 16.125 12.828125 C 15.039063 12.828125 14.453125 13.558594 14.171875 14.265625 C 14.066406 14.519531 14.039063 14.867188 14.039063 15.222656 L 14.039063 22.070313 L 9.945313 22.070313 L 9.921875 9.976563 L 14.015625 9.976563 L 14.039063 11.683594 C 14.5625 10.875 15.433594 9.730469 17.519531 9.730469 C 20.105469 9.730469 22.039063 11.417969 22.039063 15.046875 L 22.039063 22.070313 Z" stroke-linecap="round" /></g></svg></a></li>
@@ -134,5 +152,6 @@
     </div>
     <script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
     <script src="app.js" type="module"></script>
+    <script src="theme.js" type="text/javascript"></script>
 </body>
 </html>

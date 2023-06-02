@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    transition: .3s;
+}
 html.white-theme { 
     filter: invert(1) hue-rotate(120deg);
 }
@@ -27,19 +30,19 @@ div.hero-container{
     justify-content: center;
     padding-top: 15vh;
     padding-bottom: 18vh;
+
 }
 .hero-content{
     text-align: center;
-    width: 40%;
 }
 .hero-content h1{
-    font-size: 8.75rem;
+    font-size: 8.75em;
     text-transform: uppercase;
     letter-spacing: -2px;
     line-height: 95%;
 }
 .hero-content h6{
-    font-size: 1rem;
+    font-size: 1em;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 20px;
@@ -100,6 +103,9 @@ div.hero-container{
 .lines-content.mask .line:not(.line:first-of-type):hover:before{
     transform: translateY(0);
     height: 96px;
+}
+.lines-content.mask .line:not(.line:first-of-type){
+    border-top: 1px solid transparent;
 }
 .lines-content.bg .line:not(.line:first-of-type){
     border-top: 1px solid #b7ab983b;
@@ -261,13 +267,11 @@ canvas{
     justify-content: center;
     font-size: 2rem;
 }
-
 .horizontal {
     padding: 100px 0;
     display: flex;
     overflow: hidden;
 }
-
 .horizontal-card {
     border: 1px solid #b7ab98;
     padding: 40px 50px;
@@ -282,19 +286,79 @@ canvas{
 .horizontal-card .img-bg img{
     width: 100%;
 }
-
 .horizontal-card .img-bg{
     width: 450px;
     height: 300px;
     background-color: white;
 }
-
 .horizontal-card p{
     font-size: 1.2rem;
     font-weight: 700;
     margin: 10px 0;
     width: 450px;
     text-align: center;
+}
+.theme-btn circle{
+  transition: .3s;
+}
+.theme-btn.active circle{
+  r: 6;
+}
+.theme-btn g{
+  opacity: 0;
+  transition: .4s;
+  transform-origin: 50% 50%;
+  transform: rotate(180deg) scale(50%);
+}
+.theme-btn mask circle{
+  transition: .4s;
+}
+.theme-btn.active g{
+  opacity: 1;
+  transform: rotate(45deg) scale(100%);
+}
+.theme-btn.active mask circle{
+  cx: 26;
+}
+a:hover .theme-btn.active g{
+    stroke: #62CDFF;
+    transform: rotate(65deg) scale(110%);
+  }
+a:hover .theme-btn:not(.active) mask circle{
+  cx: 24;
+}
+a:hover .theme-btn circle{
+    fill: #62CDFF;
+}
+  
+@media only screen and (max-width: 1200px) {
+    html {
+      font-size: 8px;
+    }
+    .loading-screen h5 {
+        font-size: 1.6vw;
+    }
+    .hero-content{
+        font-size: 14px;
+    }
+    .lines-content h2{
+        font-size: 72px;
+    }
+    .lines-content.mask .line:not(.line:first-of-type):hover:before{
+        transform: translateY(0);
+        height: 73px;
+    }
+    .horizontal-card .img-bg{
+        width: 350px;
+        height: 230px;
+    }
+    .horizontal-card p{
+        width: 350px;
+        font-size: 1.8rem;
+    }
+    .section-footer{
+        height: 150px;
+    }
 }
 
 @media only screen and (max-width: 800px) {
@@ -323,8 +387,14 @@ canvas{
     html {
       font-size: 6px;
     }
-    .hero-container{
-        font-size: 20px;
+    .loading-screen h5 {
+        font-size: 2.6vw;
+    }
+    .hero-content{
+        font-size: 8px;
+    }
+    .hero-container h6{
+        font-size: 12px;
     }
     .lines-content h2{
         font-size: 72px;
@@ -346,5 +416,14 @@ canvas{
     }
     .section-footer{
         height: 150px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    html {
+      font-size: 5px;
+    }
+    .hero-content{
+        font-size: 6px;
     }
 }

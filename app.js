@@ -217,7 +217,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     });
 });
-
-function changeTheme(){
-    document.querySelector('html').classList.toggle('white-theme')
-}
