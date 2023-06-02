@@ -4,7 +4,8 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrollToPlugin);
+
+//proggres bar config==============================================================================================================
 
 const bar = new ProgressBar.Circle('#loading-container', {
     color: '#b7ab98',
@@ -32,17 +33,7 @@ const bar = new ProgressBar.Circle('#loading-container', {
   });
   bar.text.style.fontSize = '2rem';
 
-const lenis = new Lenis({
-    duration: 2.6,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-})
-  
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-  
-requestAnimationFrame(raf);
+//mouse follower config==============================================================================================================
 
 const cursor = new MouseFollower({
     el: null,
@@ -83,13 +74,27 @@ const cursor = new MouseFollower({
     hideMediaTimeout: 300
 });
 
+//gsap and lenis==============================================================================================================
+
 document.querySelectorAll(".nav-list li").forEach(e => {
     e.addEventListener("click", () => {
-        gsap.to(window, {duration: 1.2, scrollTo: e.children[0].getAttribute("data-href")});
+        lenis.scrollTo(e.children[0].getAttribute("data-href"), {duration: 2.5})
     })
 })
 
-//gsap==============================================================================================================
+
+const lenis = new Lenis({
+    duration: 2.6,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+})
+  
+function raf(time) {
+    lenis.raf(time);
+    ScrollTrigger.update;
+    requestAnimationFrame(raf);
+}
+  
+requestAnimationFrame(raf);
 
 const lines = document.querySelectorAll('.lines-gsap');
 
@@ -97,7 +102,7 @@ lines.forEach(e => {
   gsap.to(e.children[0].children, {"--size": "0%", stagger: 0.7, duration: 20, scrollTrigger: {
   trigger: e,
   start: '0% center',
-  scrub: true,
+  scrub: 2,
 }});  
 });
 
@@ -111,11 +116,11 @@ document.querySelectorAll(".plain-gsap").forEach((section) => {
 })
 
 document.querySelectorAll(".plain-text-mask").forEach(e => {
-    gsap.to(e.children, {"--size": "0%", stagger: 1, duration: 1, scrollTrigger: {
+    gsap.to(e.children, {"--size": "0%", stagger: .1, duration: .1, scrollTrigger: {
         trigger: e,
         start: 'top bottom',
         end: "center 20%",
-        scrub: true,
+        scrub: 2.8,
     }})
 }); 
 
