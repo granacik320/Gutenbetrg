@@ -158,11 +158,15 @@ const scene = new THREE.Scene();
 
 renderer.gammaOutput = true;
 
-const Sun = new THREE.DirectionalLight( 0xffffff, 4 );
+const Sun = new THREE.DirectionalLight( 0xffffff, 1 );
 Sun.position.set(1, -1, -2);
 scene.add(Sun);
 
-const ambient =  new THREE.AmbientLight( 0x97DEFF, 4 );
+const shadow = new THREE.DirectionalLight( 0xffffff, -4 );
+shadow.position.set(-3, 0, -1);
+scene.add(shadow);
+
+const ambient =  new THREE.AmbientLight( 0x97DEFF, 3.2 );
 scene.add(ambient);
 
 
@@ -177,7 +181,7 @@ const camera = new THREE.PerspectiveCamera(
 const orbit = new OrbitControls(camera, renderer.domElement);
 orbit.enabled = false;
 
-camera.position.set(0, 10, 10);
+camera.position.set(0, 7, 10);
 orbit.update();
 
 const loader = new GLTFLoader();
